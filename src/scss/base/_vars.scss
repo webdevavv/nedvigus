@@ -1,0 +1,24 @@
+:root {
+  --container-width: 1200px;
+  --container-padding: 15px;
+
+  --font-main: "Roboto", Arial, sans-serif;
+
+  --body-bg: #fafafa;
+  --white: #fff;
+  --text-color: #290609;
+  --accent: #d82b2e;
+  --dark-red: #ba2c3f;
+
+  --laptop-size: 1199px;
+  --tablet-size: 959px;
+  --mobile-size: 599px;
+}
+$vp-320: 320px;
+$vp-375: 375px;
+$vp-500: 500px;
+$vp-768: 768px;
+$vp-1024: 1024px;
+$vp-1280: 1280px;
+$vp-1440: 1440px;
+$vp-1920: 1920px;
