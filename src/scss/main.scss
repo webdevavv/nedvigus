@@ -15,6 +15,121 @@ img {
   width: 100%;
   height: auto;
 }
+.not-scroll {
+  overflow: hidden;
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  left: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
+  &.open {
+    display: block;
+  }
+  &-close {
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    z-index: 99;
+    @include vp-768 {
+      right: 15px;
+      top: 20px;
+    }
+  }
+  &-content {
+    cursor: default;
+    width: 100%;
+    min-height: 620px;
+    background: #fff;
+    margin: 100px auto;
+    max-width: 1240px;
+    position: relative;
+    padding: 40px 20px;
+    @include vp-1024 {
+      max-width: 600px;
+      min-height: auto;
+      margin: 50px auto;
+    }
+  }
+  &-body {
+    display: flex;
+    gap: 30px;
+    @include vp-1024 {
+      flex-direction: column;
+    }
+    &__image {
+      max-width: 560px;
+      height: 560px;
+      width: 100%;
+      overflow: hidden;
+      aspect-ratio: 1;
+      img {
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      @include vp-1024 {
+        height: auto;
+      }
+    }
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      @include vp-768 {
+        align-items: stretch;
+      }
+      h3 {
+        color: #290609;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.35;
+        @include vp-768 {
+          font-size: 20px;
+        }
+      }
+      &-btn {
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #ffffff;
+          background-color: #558877;
+          border-radius: 5px;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px;
+          height: 45px;
+          font-size: 14px;
+          padding-left: 30px;
+          padding-right: 30px;
+          @include vp-768 {
+            width: 100%;
+            font-size: 12px;
+          }
+        }
+      }
+      &-text {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 1.55;
+        color: #290609;
+        @include vp-768 {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
 
 .page-content {
   margin-left: 255px;
@@ -333,9 +448,15 @@ img {
   &-form {
     padding: 30px 0;
     margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     &__inputs {
       display: flex;
       gap: 20px;
+      @include vp-768 {
+        flex-direction: column;
+      }
     }
     &__input {
       display: flex;
@@ -362,6 +483,43 @@ img {
           border: none;
           color: #000;
           font-size: 20px;
+          font-weight: 400;
+          line-height: 1.35;
+        }
+      }
+    }
+    &__results {
+      display: flex;
+      gap: 30px;
+      &-button {
+        button {
+          color: #ffffff;
+          font-size: 14px;
+          line-height: 1.55;
+          font-weight: 600;
+          border-radius: 30px;
+          background-color: #1e6184;
+
+          height: 55px;
+
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          padding: 0 40px;
+        }
+      }
+      &-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .result {
+          display: flex;
+          gap: 5px;
+
+          color: #000;
+          font-size: 18px;
           font-weight: 400;
           line-height: 1.35;
         }

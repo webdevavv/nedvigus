@@ -50,7 +50,9 @@ $(".toggle").click(function (e) {
 });
 
 var sections = $("section"),
-  nav = $(".sidebar-menu__nav");
+  nav = $(".sidebar-menu__nav"),
+  mobNav = $(".mobile-nav"),
+  mobNavMenu = $(".mobile-nav__item-navigation ul");
 
 $(window).on("scroll", function () {
   var cur_pos = $(this).scrollTop();
@@ -86,6 +88,41 @@ nav.find("a").on("click", function () {
 
   return false;
 });
+
+mobNav.find("a").on("click", function () {
+  var $el = $(this),
+    id = $el.attr("href");
+
+  $("html, body").animate(
+    {
+      scrollTop: $(id).offset().top,
+    },
+    100
+  );
+
+  return false;
+});
+
+$(".mobile-nav__item-navigation-button").on("click", function (e) {
+  e.preventDefault();
+  $(this).toggleClass("show");
+  $(".mobile-nav__item-navigation").toggleClass("show");
+});
+mobNavMenu.find("a").on("click", function () {
+  var $el = $(this),
+    id = $el.attr("href");
+
+  $("html, body").animate(
+    {
+      scrollTop: $(id).offset().top,
+    },
+    100
+  );
+  $(".mobile-nav__item-navigation").removeClass("show");
+
+  return false;
+});
+
 $(".top").on("click", function () {
   var $el = $(this),
     id = $el.attr("href");
@@ -99,3 +136,43 @@ $(".top").on("click", function () {
 
   return false;
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  var openModalBtn = document.querySelectorAll(".modal-open"),
+    modalOverlay = document.querySelectorAll(".modal"),
+    modalContent = document.querySelectorAll(".modal-content"),
+    closeModalBtn = document.querySelectorAll(".modal-close");
+
+  //open modal
+  openModalBtn.forEach(function (item) {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementsByTagName("body")[0].classList.add("not-scroll");
+      var modalId = this.getAttribute("data-modal-id"),
+        modalElem = document.querySelector('.modal[id="' + modalId + '"]');
+      modalElem.classList.add("open");
+    });
+  });
+
+  //close modal on click on close-modal btn
+  closeModalBtn.forEach(function (item) {
+    item.addEventListener("click", function () {
+      item.parentNode.closest(".modal").classList.remove("open");
+      document.getElementsByTagName("body")[0].classList.remove("not-scroll");
+    });
+  });
+
+  $(document).click(function (event) {
+    //if you click on anything except the modal itself or the "open modal" link, close the modal
+    if ($(".modal").hasClass("open")) {
+      if ($(event.target).find(".modal-content").length !== 0) {
+        $(event.target).closest(".modal").removeClass("open");
+        document.getElementsByTagName("body")[0].classList.remove("not-scroll");
+      }
+    }
+  });
+});
+
+function updateTextInput(val, id) {
+  document.getElementById(`${id}`).value = val;
+}

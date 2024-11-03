@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
-    @@include('blocks/sidebar.html')
+    @@include('blocks/modals.html') @@include('blocks/sidebar.html')
 
     <div class="page-content">
       <!-- s-top-block start -->
@@ -545,7 +545,7 @@
             <h2 class="m-title">PLUS</h2>
             <div class="m-plus-grid">
               <div class="m-plus-grid__item">
-                <a href="#">
+                <a href="#" class="modal-open" data-modal-id="modal1">
                   <div class="m-plus-grid__item-image">
                     <img src="img/plus_image.jpg" alt="plus" />
                   </div>
@@ -562,7 +562,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#">
+                <a href="#" class="modal-open" data-modal-id="modal2">
                   <div class="m-plus-grid__item-image">
                     <img src="img/plus_image.jpg" alt="plus" />
                   </div>
@@ -579,7 +579,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#">
+                <a href="#" class="modal-open" data-modal-id="modal3">
                   <div class="m-plus-grid__item-image">
                     <img src="img/plus_image.jpg" alt="plus" />
                   </div>
@@ -596,7 +596,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#">
+                <a href="#" class="modal-open" data-modal-id="modal1">
                   <div class="m-plus-grid__item-image">
                     <img src="img/plus_image.jpg" alt="plus" />
                   </div>
@@ -613,7 +613,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#">
+                <a href="#" class="modal-open" data-modal-id="modal2">
                   <div class="m-plus-grid__item-image">
                     <img src="img/plus_image.jpg" alt="plus" />
                   </div>
@@ -925,7 +925,7 @@
       <!-- s-buy end -->
 
       <!-- s-calc start -->
-      <!-- <section class="s-calc">
+      <section class="s-calc">
         <div class="container">
           <h2 class="m-title">Ипотечный калькулятор</h2>
         </div>
@@ -936,21 +936,42 @@
                 <div class="m-calc-form__input">
                   <label for="cost">Стоимость недвижимости</label>
                   <div class="input">
-                    <input type="text" id="cost" />
+                    <input type="number" id="cost" />
+                    <input
+                      type="range"
+                      name="rangeInput"
+                      min="0"
+                      max="100"
+                      onchange="updateTextInput(this.value, 'cost');"
+                    />
                     <div class="icon">₽</div>
                   </div>
                 </div>
                 <div class="m-calc-form__input">
                   <label for="f-pay">Первоначальный взнос</label>
                   <div class="input">
-                    <input type="text" id="f-pay" />
+                    <input type="number" id="f-pay" />
+                    <input
+                      type="range"
+                      name="rangeInput"
+                      min="0"
+                      max="100"
+                      onchange="updateTextInput(this.value, 'f-pay');"
+                    />
                     <div class="icon">₽</div>
                   </div>
                 </div>
                 <div class="m-calc-form__input">
                   <label for="time">Срок</label>
                   <div class="input">
-                    <input type="text" id="time" />
+                    <input type="number" id="time" />
+                    <input
+                      type="range"
+                      name="rangeInput"
+                      min="0"
+                      max="100"
+                      onchange="updateTextInput(this.value, 'time');"
+                    />
                     <div class="icon">лет</div>
                   </div>
                 </div>
@@ -979,7 +1000,7 @@
             </form>
           </div>
         </div>
-      </section> -->
+      </section>
       <!-- s-calc end -->
 
       <!-- s-call-banner start -->
@@ -1074,7 +1095,8 @@
     </div>
 
     <!--Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
