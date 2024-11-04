@@ -451,10 +451,17 @@ img {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    @include vp-1024 {
+      flex-direction: row;
+    }
+    @media (max-width: 570px) {
+      flex-direction: column;
+      align-items: center;
+    }
     &__inputs {
       display: flex;
       gap: 20px;
-      @include vp-768 {
+      @include vp-1024 {
         flex-direction: column;
       }
     }
@@ -469,11 +476,12 @@ img {
         line-height: 1.35;
       }
       .input {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border: 1px solid #9c9c9c;
-        padding: 2px;
+        padding: 7px;
         padding-right: 5px;
         max-width: 280px;
         width: 100%;
@@ -486,13 +494,21 @@ img {
           font-weight: 400;
           line-height: 1.35;
         }
+        input[type="range"] {
+          position: absolute;
+          bottom: -14px;
+          left: 0;
+        }
       }
     }
     &__results {
       display: flex;
       gap: 30px;
+      @include vp-1024 {
+        flex-direction: column;
+      }
       &-button {
-        button {
+        input {
           color: #ffffff;
           font-size: 14px;
           line-height: 1.55;

@@ -1149,17 +1149,19 @@
         </div>
         <div class="m-calc">
           <div class="container">
-            <form class="m-calc-form">
+            <form class="m-calc-form" id="calc-form">
               <div class="m-calc-form__inputs">
                 <div class="m-calc-form__input">
                   <label for="cost">Стоимость недвижимости</label>
                   <div class="input">
-                    <input type="number" id="cost" />
+                    <input type="number" id="cost" value="0" />
                     <input
+                      class="custom-slider"
                       type="range"
                       name="rangeInput"
                       min="0"
-                      max="100"
+                      max="1000"
+                      value="0"
                       onchange="updateTextInput(this.value, 'cost');"
                     />
                     <div class="icon">₽</div>
@@ -1168,12 +1170,14 @@
                 <div class="m-calc-form__input">
                   <label for="f-pay">Первоначальный взнос</label>
                   <div class="input">
-                    <input type="number" id="f-pay" />
+                    <input type="number" id="f-pay" value="0" />
                     <input
+                      class="custom-slider"
                       type="range"
                       name="rangeInput"
                       min="0"
-                      max="100"
+                      max="1000"
+                      value="0"
                       onchange="updateTextInput(this.value, 'f-pay');"
                     />
                     <div class="icon">₽</div>
@@ -1182,12 +1186,14 @@
                 <div class="m-calc-form__input">
                   <label for="time">Срок</label>
                   <div class="input">
-                    <input type="number" id="time" />
+                    <input type="number" id="time" value="0" />
                     <input
+                      class="custom-slider"
                       type="range"
                       name="rangeInput"
                       min="0"
-                      max="100"
+                      max="30"
+                      value="0"
                       onchange="updateTextInput(this.value, 'time');"
                     />
                     <div class="icon">лет</div>
@@ -1196,20 +1202,20 @@
               </div>
               <div class="m-calc-form__results">
                 <div class="m-calc-form__results-button">
-                  <button>Рассчитать</button>
+                  <input type="submit" value="Рассчитать" />
                 </div>
                 <div class="m-calc-form__results-inputs">
                   <div class="m-calc-form__input">
                     <label for="cost">Ежемесячный платеж</label>
                     <div class="result">
-                      134234124
+                      <span id="monthPay">123123</span>
                       <div class="icon">₽</div>
                     </div>
                   </div>
                   <div class="m-calc-form__input">
                     <label for="cost">Начисленные проценты</label>
                     <div class="result">
-                      134234124
+                      <span id="yearPay">1231231</span>
                       <div class="icon">₽</div>
                     </div>
                   </div>
@@ -1362,5 +1368,22 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="./js/index.js"></script>
+    <script>
+      document
+        .getElementById("calc-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          let cost = document.getElementById("cost").value;
+          let fPay = document.getElementById("f-pay").value;
+          let time = document.getElementById("time").value;
+
+          let monthPay = (cost * fPay * time) / 12;
+          let yearPay = cost * fPay * time;
+          console.log(monthPay, yearPay);
+
+          document.getElementById("monthPay").innerHTML = monthPay;
+          document.getElementById("yearPay").innerHTML = yearPay;
+        });
+    </script>
   </body>
 </html>
