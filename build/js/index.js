@@ -18,6 +18,12 @@ $(document).ready(function () {
     $(".sidebar-menu").toggleClass("close");
     document.getElementsByTagName("body")[0].classList.toggle("not-scroll");
   });
+  $(".sidebar-menu__contacts .modal-open").click(function () {
+    document.getElementsByTagName("body")[0].classList.remove("not-scroll");
+    $(".burger").removeClass("active");
+    $(".sidebar").removeClass("close");
+    $(".sidebar-menu").removeClass("close");
+  });
   $(".sidebar-menu-close").click(function () {
     document.getElementsByTagName("body")[0].classList.remove("not-scroll");
     $(".burger").removeClass("active");
