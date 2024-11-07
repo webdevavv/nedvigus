@@ -53,39 +53,39 @@ gulp.task("sass:dev", function () {
     .pipe(sassGlob())
     .pipe(sass())
     .pipe(sourceMaps.write())
-    .pipe(gulp.dest("./build/css/"));
+    .pipe(gulp.dest("./build/assets/css/"));
 });
 
 gulp.task("images:dev", function () {
   return (
     gulp
       .src("./src/img/**/*")
-      .pipe(changed("./build/img/"))
+      .pipe(changed("./build/assets/img/"))
       // .pipe(imagemin({ verbose: true }))
-      .pipe(gulp.dest("./build/img/"))
+      .pipe(gulp.dest("./build/assets/img/"))
   );
 });
 
 gulp.task("fonts:dev", function () {
   return gulp
     .src("./src/fonts/**/*")
-    .pipe(changed("./build/fonts/"))
-    .pipe(gulp.dest("./build/fonts/"));
+    .pipe(changed("./build/assets/fonts/"))
+    .pipe(gulp.dest("./build/assets/fonts/"));
 });
 
 gulp.task("files:dev", function () {
   return gulp
     .src("./src/files/**/*")
-    .pipe(changed("./build/files/"))
-    .pipe(gulp.dest("./build/files/"));
+    .pipe(changed("./build/assets/files/"))
+    .pipe(gulp.dest("./build/assets/files/"));
 });
 
 gulp.task("js:dev", function () {
   return gulp
     .src("./src/js/*.js")
-    .pipe(changed("./build/js/"))
+    .pipe(changed("./build/assets/js/"))
     .pipe(plumber(plumberNotify("JS")))
-    .pipe(gulp.dest("./build/js/"));
+    .pipe(gulp.dest("./build/assets/js/"));
 });
 
 const serverOptions = {
