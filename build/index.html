@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
-    <div class="modal" id="modal1">
+    <div class="modal" id="modal-1">
   <button type="button" class="modal-close">
     <svg
       role="presentation"
@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<div class="modal" id="modal2">
+<div class="modal" id="modal-2">
   <button type="button" class="modal-close">
     <svg
       role="presentation"
@@ -115,7 +115,7 @@
   </div>
 </div>
 
-<div class="modal" id="modal3">
+<div class="modal" id="modal-3">
   <button type="button" class="modal-close">
     <svg
       role="presentation"
@@ -791,7 +791,9 @@
               <h3>Есть вопрос? Наш менеджер готов перезвонить вам</h3>
             </div>
             <div class="m-call-banner__button">
-              <a href="#">Заказать звонок</a>
+              <span class="modal-open" data-modal-id="modal-call"
+                >Заказать звонок</span
+              >
             </div>
           </div>
         </div>
@@ -854,7 +856,7 @@
             <h2 class="m-title">PLUS</h2>
             <div class="m-plus-grid">
               <div class="m-plus-grid__item">
-                <a href="#" class="modal-open" data-modal-id="modal1">
+                <a href="#modal-1" class="modal-open" data-modal-id="modal-1">
                   <div class="m-plus-grid__item-image">
                     <img src="assets/img/plus_image.jpg" alt="plus" />
                   </div>
@@ -871,7 +873,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#" class="modal-open" data-modal-id="modal2">
+                <a href="#modal-2" class="modal-open" data-modal-id="modal-2">
                   <div class="m-plus-grid__item-image">
                     <img src="assets/img/plus_image.jpg" alt="plus" />
                   </div>
@@ -888,7 +890,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#" class="modal-open" data-modal-id="modal3">
+                <a href="#" class="modal-open" data-modal-id="modal-3">
                   <div class="m-plus-grid__item-image">
                     <img src="assets/img/plus_image.jpg" alt="plus" />
                   </div>
@@ -905,7 +907,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#" class="modal-open" data-modal-id="modal1">
+                <a href="#" class="modal-open" data-modal-id="modal-1">
                   <div class="m-plus-grid__item-image">
                     <img src="assets/img/plus_image.jpg" alt="plus" />
                   </div>
@@ -922,7 +924,7 @@
                 </a>
               </div>
               <div class="m-plus-grid__item">
-                <a href="#" class="modal-open" data-modal-id="modal2">
+                <a href="#" class="modal-open" data-modal-id="modal-2">
                   <div class="m-plus-grid__item-image">
                     <img src="assets/img/plus_image.jpg" alt="plus" />
                   </div>
@@ -952,8 +954,8 @@
               <h3>Приобретите квартиру и начинайте каждый день с комфортом</h3>
             </div>
             <div class="m-call-banner__button">
-              <a href="#" class="modal-open" data-modal-id="modal-call"
-                >Заказать звонок</a
+              <span class="modal-open" data-modal-id="modal-call"
+                >Заказать звонок</span
               >
             </div>
           </div>

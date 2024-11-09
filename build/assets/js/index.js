@@ -147,8 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //open modal
   openModalBtn.forEach(function (item) {
-    item.addEventListener("click", function (e) {
-      e.preventDefault();
+    item.addEventListener("click", function () {
       document.getElementsByTagName("body")[0].classList.add("not-scroll");
       var modalId = this.getAttribute("data-modal-id"),
         modalElem = document.querySelector('.modal[id="' + modalId + '"]');
@@ -159,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //close modal on click on close-modal btn
   closeModalBtn.forEach(function (item) {
     item.addEventListener("click", function () {
+      history.pushState(null, null, location.href.split("#")[0]);
       item.parentNode.closest(".modal").classList.remove("open");
       document.getElementsByTagName("body")[0].classList.remove("not-scroll");
     });
@@ -168,11 +168,25 @@ document.addEventListener("DOMContentLoaded", function () {
     //if you click on anything except the modal itself or the "open modal" link, close the modal
     if ($(".modal").hasClass("open")) {
       if ($(event.target).find(".modal-content").length !== 0) {
+        history.pushState(null, null, location.href.split("#")[0]);
         $(event.target).closest(".modal").removeClass("open");
         document.getElementsByTagName("body")[0].classList.remove("not-scroll");
       }
     }
   });
+});
+
+$(document).ready(function () {
+  var hash = window.location.hash;
+  console.log(hash.split("-"));
+
+  if (hash.split("-")[0] == "#modal") {
+    // document.getElementsByTagName("body")[0].classList.add("not-scroll");
+    var modalElem = document.querySelector(
+      '.modal[id="modal-' + hash.split("-")[1] + '"]'
+    );
+    modalElem.classList.add("open");
+  }
 });
 
 function updateTextInput(val, id) {

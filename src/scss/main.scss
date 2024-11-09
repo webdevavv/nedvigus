@@ -21,18 +21,40 @@ img {
 
 .modal {
   position: fixed;
-  z-index: 999;
+  z-index: -999;
   background-color: #fff;
   width: 100%;
   height: 100%;
   overflow-y: auto;
   left: 0;
   top: 0;
-  display: none;
+  display: block;
   cursor: pointer;
-  &.open {
-    display: block;
+  opacity: 0;
+  -webkit-transition: opacity ease-in-out 0.3s;
+  -moz-transition: opacity ease-in-out 0.3s;
+  -o-transition: opacity ease-in-out 0.3s;
+  transition: opacity ease-in-out 0.3s;
+  &-body {
+    position: relative;
+    transform: translateY(30%) scale(0.9);
+    -webkit-transition: transform ease-in-out 0.3s;
+    -moz-transition: transform ease-in-out 0.3s;
+    -o-transition: transform ease-in-out 0.3s;
+    transition: transform ease-in-out 0.3s;
   }
+  &.open {
+    z-index: 999;
+    opacity: 1;
+    .modal-body {
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
   &-close {
     position: absolute;
     right: 40px;
@@ -441,7 +463,8 @@ img {
     }
   }
   &__button {
-    a {
+    a,
+    span {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -451,6 +474,7 @@ img {
       color: var(--dark-red);
       font-weight: 500;
       height: 60px;
+      cursor: pointer;
 
       white-space: nowrap;
 
