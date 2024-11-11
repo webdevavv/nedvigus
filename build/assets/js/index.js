@@ -105,26 +105,6 @@ mobNav.find("a").on("click", function () {
   return false;
 });
 
-// $(".mobile-nav__item-navigation-button").on("click", function (e) {
-//   e.preventDefault();
-//   $(this).toggleClass("show");
-//   $(".mobile-nav__item-navigation").toggleClass("show");
-// });
-// mobNavMenu.find("a").on("click", function () {
-//   var $el = $(this),
-//     id = $el.attr("href");
-
-//   $("html, body").animate(
-//     {
-//       scrollTop: $(id).offset().top,
-//     },
-//     100
-//   );
-//   $(".mobile-nav__item-navigation").removeClass("show");
-
-//   return false;
-// });
-
 $(".top").on("click", function () {
   var $el = $(this),
     id = $el.attr("href");
@@ -139,6 +119,17 @@ $(".top").on("click", function () {
   return false;
 });
 
+const getModalContent = (path) => {
+  fetch(`/assets/components/dubl/api${path}`)
+    .then((response) => response.json())
+    .then((data) => {
+      let modalElem = document.querySelector(".modal > .modal-content");
+      modalElem.innerHTML = data.object._html;
+      document.querySelector('.modal[id="modal_plus"]').classList.add("open");
+      console.log(data.object._html);
+    });
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   var openModalBtn = document.querySelectorAll(".modal-open"),
     modalOverlay = document.querySelectorAll(".modal"),
@@ -147,18 +138,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //open modal
   openModalBtn.forEach(function (item) {
-    item.addEventListener("click", function () {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
       document.getElementsByTagName("body")[0].classList.add("not-scroll");
-      var modalId = this.getAttribute("data-modal-id"),
-        modalElem = document.querySelector('.modal[id="' + modalId + '"]');
-      modalElem.classList.add("open");
+      var modalId = this.getAttribute("href");
+
+      getModalContent(modalId);
     });
   });
 
   //close modal on click on close-modal btn
   closeModalBtn.forEach(function (item) {
     item.addEventListener("click", function () {
-      history.pushState(null, null, location.href.split("#")[0]);
+      history.pushState(null, null, "/");
       item.parentNode.closest(".modal").classList.remove("open");
       document.getElementsByTagName("body")[0].classList.remove("not-scroll");
     });
@@ -177,15 +169,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 $(document).ready(function () {
-  var hash = window.location.hash;
-  console.log(hash.split("-"));
+  var pathname = window.location.pathname;
 
-  if (hash.split("-")[0] == "#modal") {
-    // document.getElementsByTagName("body")[0].classList.add("not-scroll");
-    var modalElem = document.querySelector(
-      '.modal[id="modal-' + hash.split("-")[1] + '"]'
-    );
-    modalElem.classList.add("open");
+  if (pathname.includes("plus")) {
+    getModalContent(pathname);
   }
 });
 
